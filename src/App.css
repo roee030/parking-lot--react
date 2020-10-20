@@ -1,0 +1,11 @@
+.header {
+  display: flex;
+  justify-content: space-around;
+}
+.header > * {
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+}
+body {
+}
