@@ -27,7 +27,10 @@ export default function UserDashBoard(props) {
   return user ? (
     <div className="userDataDisplayWraper">
       <div className="userDataDisplay">
-        <div className="date data"> Create on : {user.date}</div>
+        <div className=" data">
+          <div>Create on :</div>
+          <div>{user.date}</div>
+        </div>
         <div className="parking-lot data"> Parking:{user.parkName}</div>
         <table>
           <tbody>
