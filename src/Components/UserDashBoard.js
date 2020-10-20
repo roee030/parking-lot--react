@@ -31,27 +31,22 @@ export default function UserDashBoard(props) {
           <div>Create on :</div>
           <div>{user.date}</div>
         </div>
-        <div className="parking-lot data"> Parking:{user.parkName}</div>
-        <table>
-          <tbody>
-            <tr className=" data">
-              <td>Full Name :</td>
-              <td>{user.userFullName}</td>
-            </tr>
-            <tr>
-              <td>Car Number :</td>
-              <td>{user.userCarNumber}</td>
-            </tr>
-            <tr>
-              <td>Car type :</td>
-              <td>{user.userCarType}</td>
-            </tr>
-          </tbody>
-        </table>
-        {/* <div> Parking : {user.date}</div>
-        <div> Full Name: {user.userFullName}</div>
-        <div> Car Number : {user.userCarNumber}</div>
-        <div> Car type : {user.userCarType}</div> */}
+        <div className=" data">
+          <div>Parking :</div>
+          <div>{user.parkName}</div>
+        </div>
+        <div className=" data">
+          <div>Full Name :</div>
+          <div>{user.userFullName}</div>
+        </div>
+        <div className=" data">
+          <div>Car Number :</div>
+          <div>{user.userCarNumber}</div>
+        </div>
+        <div className=" data">
+          <div>Car type :</div>
+          <div>{user.userCarType}</div>
+        </div>
       </div>
     </div>
   ) : (
