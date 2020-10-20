@@ -12,8 +12,25 @@
   flex-direction: column;
   align-content: center;
   padding: 1em;
+  width: 50vw;
 }
 input {
   padding: 0.5em 3em;
   margin: 0.5em;
+  background-color: #d7e3fb;
+  border: none;
+}
+
+.onsubmit-btn {
+  background-color: #5e4c9a;
+  color: white;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+}
+.onsubmit-btn-wraper {
+  display: flex;
+  justify-content: center;
 }

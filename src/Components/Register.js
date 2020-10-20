@@ -39,6 +39,7 @@ export default function Register({ setUserData }) {
         />
         {flag ? (
           <Link
+            className="onsubmit-btn-wraper"
             to={{
               pathname: "/userdashboard",
               userData: {
@@ -50,15 +51,24 @@ export default function Register({ setUserData }) {
               },
             }}
           >
-            <button>GET PARKING NUMBER</button>
+            <input
+              className="onsubmit-btn"
+              type="text"
+              defaultValue="GET PARKING NUMBER"
+            />
           </Link>
         ) : (
           <Link
+            className="onsubmit-btn-wraper"
             to={{
               pathname: "/",
             }}
           >
-            <button>GET PARKING NUMBER</button>
+            <input
+              className="onsubmit-btn"
+              type="text"
+              defaultValue="GET PARKING NUMBER"
+            />
           </Link>
         )}
       </form>
