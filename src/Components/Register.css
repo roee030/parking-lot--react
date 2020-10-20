@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 80vh;
   margin: 0;
 }
 .formRegister {
@@ -19,6 +19,8 @@ input {
   margin: 0.5em;
   background-color: #d7e3fb;
   border: none;
+  border-bottom: none;
+  outline: none;
 }
 
 .onsubmit-btn {
@@ -29,6 +31,15 @@ input {
   padding: 10px;
   width: 100%;
   text-align: center;
+}
+.onsubmit-btn:active {
+  border-bottom: none;
+  outline: none;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+input:invalid {
+  box-shadow: none;
 }
 .onsubmit-btn-wraper {
   display: flex;

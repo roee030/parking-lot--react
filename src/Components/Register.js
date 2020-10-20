@@ -48,13 +48,15 @@ export default function Register({ setUserData }) {
                 userCarType,
                 userId,
                 date,
+                parkId: null,
+                parkName: null,
               },
             }}
           >
             <input
               className="onsubmit-btn"
-              type="text"
-              defaultValue="GET PARKING NUMBER"
+              value="GET PARKING NUMBER"
+              readonly
             />
           </Link>
         ) : (
@@ -67,7 +69,9 @@ export default function Register({ setUserData }) {
             <input
               className="onsubmit-btn"
               type="text"
-              defaultValue="GET PARKING NUMBER"
+              value="GET PARKING NUMBER"
+              readonly
+              disabled
             />
           </Link>
         )}

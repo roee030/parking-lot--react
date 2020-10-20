@@ -1,8 +1,25 @@
 .userDataDisplay {
   display: flex;
-  align-items: center;
+  margin: 0 auto;
   justify-content: center;
-  height: 100vh;
-  margin: 0;
+  height: 80vh;
+
+  margin-left: 15em;
+
   flex-direction: column;
+}
+.userDataDisplayWraper {
+  direction: ltr;
+}
+.date {
+  color: #5e4c9a;
+}
+.parking-lot {
+}
+.data {
+  margin: 15px 0;
+}
+td,
+tr {
+  padding: 15px 0 !important;
 }

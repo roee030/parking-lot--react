@@ -1,0 +1,9 @@
+.header-wraper {
+  padding: 0;
+  color: white;
+  background-color: #5e4c9a;
+  padding: 1em;
+}
+.header > * {
+  color: white;
+}
