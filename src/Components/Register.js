@@ -56,7 +56,7 @@ export default function Register({ setUserData }) {
             <input
               className="onsubmit-btn"
               value="GET PARKING NUMBER"
-              readonly
+              readOnly
             />
           </Link>
         ) : (
@@ -70,7 +70,7 @@ export default function Register({ setUserData }) {
               className="onsubmit-btn"
               type="text"
               value="GET PARKING NUMBER"
-              readonly
+              readOnly
               disabled
             />
           </Link>
