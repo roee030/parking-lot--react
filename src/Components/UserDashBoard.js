@@ -4,6 +4,7 @@ import usersData from "../utills/users";
 import users from "../utills/users";
 
 export default function UserDashBoard(props) {
+  ///if parkID == null alert!
   let user = props.history.location.userData;
   const [arrayOfUsers, setArrayOfUsers] = useState();
   const [freeParking, setFreeParking] = useState(false);
@@ -15,9 +16,7 @@ export default function UserDashBoard(props) {
     SetDataOfParking(localStorage.getItem("dataOfParking"));
   };
   useEffect(() => {
-    console.log("getData");
     getData();
-    saveUserToLocalStorage(user);
   });
   const saveUserToLocalStorage = (user) => {
     if (user && arrayOfUsers) {
@@ -34,27 +33,22 @@ export default function UserDashBoard(props) {
       //   setArrayOfUsers(JSON.stringify(updateUserObj));
     }
   };
-  const constUpdateUserAndSaveToLocalStorage = (user) => {
-    console.log(user);
-    let updateUserArray = JSON.parse(localStorage.getItem("dataOfUsers")).map(
-      (element) => {
-        if (element.userId == user.userId) {
+  const constUpdateUserAndSaveToLocalStorage = () => {
+    let dataOfParking = localStorage.getItem("dataOfParking");
+    if (userData && dataOfParking) {
+      dataOfParking = JSON.parse(dataOfParking).map((e) => {
+        if (e.id == userData.parkId) {
           return {
-            date: user.date,
-            parkId: user.parkId,
-            parkName: user.parkName,
-            userCarNumber: user.userCarNumber,
-            userCarType: user.userCarType,
-            userId: user.userId,
+            id: e.id,
+            name: e.name,
+            taken: true,
           };
         } else {
-          return element;
+          return e;
         }
-      }
-    );
-
-    console.log(updateUserArray);
-    userData = updateUserArray;
+      });
+      localStorage.setItem("dataOfParking", JSON.stringify(dataOfParking));
+    }
   };
   const CheckFreeParking = (user) => {
     if (user && dataOfParking) {
@@ -74,11 +68,9 @@ export default function UserDashBoard(props) {
   };
 
   useEffect(() => {
-    console.log("effect");
     // getData();
-
-    const free = CheckFreeParking(user);
-  });
+    constUpdateUserAndSaveToLocalStorage();
+  }, []);
 
   return user ? (
     <div className="userDataDisplayWraper">
@@ -89,7 +81,7 @@ export default function UserDashBoard(props) {
         </div>
         <div className=" data">
           <div>Parking :</div>
-          <div>{userData.parkName}</div>
+          <div>{user.parkName}</div>
         </div>
         <div className=" data">
           <div>Full Name :</div>

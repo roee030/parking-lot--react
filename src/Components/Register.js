@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import Parking from "../utills/parking";
+import * as UserFun from "../utills/users";
 import "./Register.css";
 export default function Register() {
   const [userFullName, setUserFullName] = useState();
@@ -63,8 +64,8 @@ export default function Register() {
                 userCarType,
                 userId,
                 date,
-                parkId: null,
-                parkName: null,
+                parkId: UserFun.setParkId(),
+                parkName: UserFun.setParkName(),
               },
             }}
           >
