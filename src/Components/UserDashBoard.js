@@ -35,6 +35,7 @@ export default function UserDashBoard(props) {
   };
   const constUpdateUserAndSaveToLocalStorage = () => {
     let dataOfParking = localStorage.getItem("dataOfParking");
+    let dataOfUsers = localStorage.getItem("dataOfUsers");
     if (userData && dataOfParking) {
       dataOfParking = JSON.parse(dataOfParking).map((e) => {
         if (e.id == userData.parkId) {
@@ -47,6 +48,10 @@ export default function UserDashBoard(props) {
           return e;
         }
       });
+      let arrayOfUsers = JSON.parse(dataOfUsers);
+      arrayOfUsers.push(userData);
+      localStorage.setItem("dataOfUsers", JSON.stringify(arrayOfUsers));
+
       localStorage.setItem("dataOfParking", JSON.stringify(dataOfParking));
     }
   };
@@ -72,7 +77,9 @@ export default function UserDashBoard(props) {
     constUpdateUserAndSaveToLocalStorage();
   }, []);
 
-  return user ? (
+  return user?.parkId === undefined ? (
+    <div className="userDataDisplay">Parking is Full</div>
+  ) : user ? (
     <div className="userDataDisplayWraper">
       <div className="userDataDisplay">
         <div className=" data">

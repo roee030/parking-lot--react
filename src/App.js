@@ -13,6 +13,7 @@ function App() {
         <Header />
         <Route path="/" exact component={Register}></Route>
         <Route path="/userDashBoard" exact component={UserDashBoard}></Route>
+        <Route path="/displayParking" exact component={CarUserData}></Route>
       </BrowserRouter>
     </div>
   );
