@@ -1,19 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 export default function CarUserData() {
-  const userData = localStorage.getItem("dataOfUsers");
   let displayUserInParkingSpot;
-  if (userData) {
-    displayUserInParkingSpot = JSON.parse(userData).map((u) => {
-      if (u.parkId !== null) {
-        return (
-          <div>
-            {u.userFullName}
-            {u.parkName}
-          </div>
-        );
-      }
-    });
-  }
-  return <div>{displayUserInParkingSpot}</div>;
+  (() => {
+    const userData = localStorage.getItem("dataOfUsers");
+
+    if (userData) {
+      displayUserInParkingSpot = JSON.parse(userData).map((u) => {
+        console.log(u.parkId !== null);
+        if (u.parkId !== null) {
+          return (
+            <div key={u.userId}>
+              <div className="data">
+                <div>Full Name :</div>
+                <div> {u.userFullName}</div>
+                <div>Park Number :</div>
+                <div> {u.parkName}</div>
+              </div>
+            </div>
+          );
+        }
+      });
+    }
+  })();
+
+  return (
+    <div className="userDataDisplayWraper">
+      <div className="userDataDisplay">{displayUserInParkingSpot}</div>;
+    </div>
+  );
 }
