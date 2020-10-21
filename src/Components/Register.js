@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-
+import Parking from "../utills/parking";
 import "./Register.css";
-export default function Register({ setUserData }) {
+export default function Register() {
   const [userFullName, setUserFullName] = useState();
   const [userCarNumber, setUserCarNumber] = useState();
   const [userCarType, setUserCarType] = useState();
@@ -12,7 +12,22 @@ export default function Register({ setUserData }) {
   const [date, setDate] = useState(
     new Intl.DateTimeFormat("en-US").format(new Date())
   );
+  const getDataFromLocalStorage = () => {
+    let dataOfUsers = localStorage.getItem("dataOfUsers");
+    let dataOfParking = localStorage.getItem("dataOfParking");
+    if (!dataOfUsers) {
+      dataOfUsers = localStorage.setItem("dataOfUsers", JSON.stringify([]));
+    }
+    if (!dataOfParking) {
+      dataOfUsers = localStorage.setItem(
+        "dataOfParking",
+        JSON.stringify(Parking)
+      );
+    }
+  };
   useEffect(() => {
+    getDataFromLocalStorage();
+
     if (userFullName && userCarNumber && userCarType) {
       setFlag(true);
     }

@@ -2,27 +2,43 @@ import React, { useState, useEffect } from "react";
 import "./UserDashBoard.css";
 import usersData from "../utills/users";
 import users from "../utills/users";
-import parking from "../utills/parking";
+
 export default function UserDashBoard(props) {
   let user = props.history.location.userData;
-  users.push(user);
-  const [success, setSuccess] = useState(false);
+  const [arrayOfUsers, setArrayOfUsers] = useState(
+    localStorage.getItem("dataOfUsers")
+  );
+  const [freeParking, setFreeParking] = useState(false);
+  const [dataOfParking, SetDataOfParking] = useState(
+    localStorage.getItem("dataOfParking")
+  );
+  const saveUserToLocalStorage = (user) => {
+    if (user) {
+      console.log(user);
+      // let updateUserObj = JSON.parse(arrayOfUsers).forEach((element) => {
+      //   if (element.UserId == user.UserId) {
+      //     console.log("duplicate user");
+      //   }
+      // });
+      let updateUserObj = JSON.parse(arrayOfUsers);
+      updateUserObj.push(user);
+      console.log(updateUserObj);
+      localStorage.setItem("dataOfUsers", JSON.stringify(updateUserObj));
+    }
+  };
   const CheckFreeParking = (user) => {
     if (user) {
-      parking.forEach((p) => {
-        if (!p.taken) {
-          user.parkId = p.id;
-          user.parkName = p.name;
-          setSuccess(true);
-        } else {
-          setSuccess(false);
-        }
-      });
+      const freeParking = JSON.parse(dataOfParking).filter((p) => !p.taken);
+      if (freeParking.length > 0) {
+        user.parkId = freeParking[0].id;
+        user.parkName = freeParking[0].name;
+      }
     }
   };
   useEffect(() => {
-    CheckFreeParking(user);
-  }, []);
+    saveUserToLocalStorage(user);
+    // const free = CheckFreeParking(user);
+  });
 
   return user ? (
     <div className="userDataDisplayWraper">

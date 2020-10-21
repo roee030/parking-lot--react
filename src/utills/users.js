@@ -6,6 +6,8 @@ const users = [
     carType: "Toyota",
     parkingId: 1,
     date: "",
+    parkId: 1,
+    parkName: "A1",
   },
 ];
 export default users;
